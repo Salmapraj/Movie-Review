@@ -1,12 +1,14 @@
 import express from "express";
 import axios from "axios";
-import dotenv from "dotenv";
+import {jwtAuthMiddleware} from "../jwt.js";
+import dotenv from "dotenv"
 
 const tmdbRouter = express.Router();
-dotenv.config();
+dotenv.config()
+
+
 const bearerToken = process.env.TMDB_BEARER_TOKEN;
 const baseUrl = "https://api.themoviedb.org/3/";
-
 //get popular movies
 tmdbRouter.get("/movies", async (req, res) => {
   try {
