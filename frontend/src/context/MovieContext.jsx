@@ -8,6 +8,7 @@ export const MovieContext = createContext()
     const [movies,setMovies]= useState([]);
     const [loading , setLoading]= useState(true)
     const [error,setError]= useState(null)
+    const [searchResults,setSearchResults]= useState([])
 
     useEffect(()=>{
 const fetchMovies =async()=>{try {
@@ -28,9 +29,22 @@ finally{
 fetchMovies()
     },[])
 
+const SearchMovies= async(query)=>{
+    try {
+        setLoading(true)
+       const res= await axios.get(`${API_URL}search?query=${query}`)
+        console.log(res.data)
+        setSearchResults(res.data.results||[])
+    } catch (error) {
+        setError('Failed to search movies')
+    }finally{
+        setLoading(false);
+    }
+}
+
 
 return(
-    <MovieContext.Provider value={{movies,loading,error}}>
+    <MovieContext.Provider value={{movies,loading,error,searchResults,SearchMovies}}>
         {children}
     </MovieContext.Provider>
 )
