@@ -2,14 +2,25 @@ import express from 'express';
 import db from './db.js';
 import bodyParser from 'body-parser';
 import dotenv from "dotenv"
+import cors from "cors"
+
 
 const app=express();
+app.use(express.json());
+app.use(bodyParser.urlencoded({extended : true}))
+app.use(cors({
+  origin: "http://localhost:5173", // frontend URL
+  credentials: true, // if you use cookies or auth headers
+}));
+
 const PORT = process.env.PORT || 3000; // fallback if not set
 
 dotenv.config()
-app.use(bodyParser.urlencoded({extended : true}))
 
 app.get("/",(req,res)=>{
+    res.send("helllo world")
+})
+app.get("/getData",(req,res)=>{
     res.send("helllo world")
 })
 

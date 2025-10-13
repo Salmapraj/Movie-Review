@@ -1,26 +1,26 @@
-import express from "express";
+import express, { response } from "express";
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
-import {generateToken} from "../jwt.js"
+import { generateToken, jwtAuthMiddleware } from "../jwt.js";
 const router = express.Router();
 
 //code for signup
-router.post("/signup", async (req, res) => {
+router.post("/register", async (req, res) => {
   try {
-    const { username, email, password } = req.body;
-    console.log('body is',req.body);
+    const { email, password } = req.body;
+    console.log("body is", req.body);
 
     //check if the user exists in the db with same email(email: unique)
-    const existUser = await User.findOne({email});
-    if(existUser) return res.status(400).json({ error: "user already exists Login" });
+    const existUser = await User.findOne({ email });
+    if (existUser)
+      return res.status(400).json({ error: "user already exists Login" });
 
     //hash user password first do npm i bcrypt
-    const saltRounds=10
-    const hashedPassword = await bcrypt.hash(password,saltRounds);
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     //document is generated in db
     const user = new User({
-      username,
       email,
       password: hashedPassword,
     }); //model ko obj
@@ -28,38 +28,36 @@ router.post("/signup", async (req, res) => {
     // save data in database
     const savedData = await user.save();
     console.log("data saved todb");
-    
-    //generate jwt token
-    const token = generateToken({email: user.email})
-    console.log('token generated: ',token)
 
-    res.status(200).json({savedData: savedData , token :token});
+    //generate jwt token
+    const token = generateToken({ email: user.email });
+    console.log("token generated: ", token);
+
+    res.status(200).json({ savedData: savedData, token: token });
   } catch (error) {
     res.status(500).json({ error: "data no saved internal server error" });
   }
 });
 
-
 //login route
-router.post("/login",async(req,res)=>{
-try {
-    const {email,password}= req.body   
-    //find user 
-const userInfo= await User.findOne({email})
-console.log('From db found',userInfo)
-const PasswordMatch = bcrypt.compare(password,userInfo.password) //return true or false
-if(!PasswordMatch || !userInfo.email) return res.status(401).json({error:'invalid  email or password'})
+router.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    //find user
+    const user = await User.findOne({ email });
+    console.log("From db found", user);
+    const PasswordMatch = await bcrypt.compare(password, user.password); //return true or false
+    if (!PasswordMatch || !user.email)
+      return res.status(401).json({ error: "invalid  email or password" });
 
     //token generate
-    const token= generateToken({email:userInfo.email})
-    res.status(200).json({token})
-} catch (error) {
-    console.log(error.response)
-    res.status(500).json({error:'internal server error'})
-}
-
-})
-
+    const token = generateToken({ email: user.email });
+    res.status(200).json({user,token });
+  } catch (error) {
+    console.log(error.response);
+    res.status(500).json({ error: "internal server error" });
+  }
+});
 
 router.get("/users", async (req, res) => {
   try {
@@ -70,15 +68,22 @@ router.get("/users", async (req, res) => {
   }
 });
 
-
-
-//profile with middleware
-router.get('/profile', (req,res)=>{
-res.status(200)
-})
-
-
-
+//profile with middleware protectedroute
+router.get("/profile", jwtAuthMiddleware, async (req, res) => {
+  try {
+    const { email } = req.userPayload;
+    //find user
+    const user = await User.findOne({ email }).select("-password");
+    console.log("From db found", user);
+    if (!user) {
+      return res.send(404).json({ message: "User not found" });
+    }
+    res.status(200).json({ user });
+  } catch (error) {
+    console.error("Profile error:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
 
 // router.get("/users/:id", async (req, res) => {
 //   try {
