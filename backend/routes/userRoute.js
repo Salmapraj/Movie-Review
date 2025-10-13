@@ -85,6 +85,13 @@ router.get("/profile", jwtAuthMiddleware, async (req, res) => {
   }
 });
 
+
+
+//logout route
+
+
+
+
 // router.get("/users/:id", async (req, res) => {
 //   try {
 //     const idData = req.params.id;
