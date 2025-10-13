@@ -1,13 +1,20 @@
 import React from "react";
-import { register } from "../../api/register";
+// import { register } from "../../api/register";
 import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+
 
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error,setError]=useState('')
+  const navigate = useNavigate()
+const {register} = useAuth();
+
   const HandleSubmit = async (e) => {
     e.preventDefault();
+    setError('')
     const PostData = {
       email,
       password,
@@ -17,6 +24,7 @@ function Register() {
       console.log("user registerd", data);
       setEmail("");
       setPassword("");
+      navigate('/login')
     } catch (error) {
       console.log("registration fialed", error.message);
     }

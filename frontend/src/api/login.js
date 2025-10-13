@@ -13,8 +13,9 @@ const response =await axios.post(`${API_URL}login`, PostData,
         }
     })
     console.log(response.data)
-    const user =response.data
-localStorage.setItem("user",JSON.stringify(user))
+    const data =response.data
+    return data
+// localStorage.setItem("user",JSON.stringify(user))
 } catch (error) {
     console.log('errorlogging in',error.message)
 }

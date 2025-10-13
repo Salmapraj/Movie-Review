@@ -1,14 +1,21 @@
 import React, { useState } from 'react'
-import { login } from '../../api/login';
+// import { login } from '../../api/login';
+import { useAuth } from '../../context/AuthContext';
+import {useNavigate} from "react-router-dom"
+
+
 
 function Login() {
-
 const [email,setEmail] =useState('')
 const [password,setPassword]= useState('')
   const [error,setError]=useState('')
+const {login}= useAuth()
+const navigate= useNavigate();
+
 
 const HandleSubmit = async (e) => {
     e.preventDefault();
+    setError('')
     const PostData = {
       email,
       password,
@@ -17,9 +24,11 @@ const HandleSubmit = async (e) => {
       const data = await login(PostData);
       console.log("user registerd", data);
       setEmail("");
-      setPassword("");
+      setPassword("")
+      navigate('/')
+      alert("login sucessful")
     } catch (error) {
-      console.log("registration fialed", error.message);
+      console.log( error.message|| 'login failed');
     }
   };
   return (
@@ -38,7 +47,7 @@ const HandleSubmit = async (e) => {
       <input type="password" placeholder='Password' className='py-2 px-1 border border-gray-500 rounded-lg' value={password} onChange={(e)=>{ 
         const value =e.target.value
         setPassword(value)
-        if(value <5) { setError('Password must  be atleast 5 characters.')} 
+        if(value.length <5) { setError('Password must  be atleast 5 characters.')} 
         else setError("")
       }}/>
       
