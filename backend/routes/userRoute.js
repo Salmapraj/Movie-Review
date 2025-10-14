@@ -1,4 +1,4 @@
-import express, { response } from "express";
+import express from "express";
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
 import { generateToken, jwtAuthMiddleware } from "../jwt.js";
@@ -30,7 +30,7 @@ router.post("/register", async (req, res) => {
     console.log("data saved todb");
 
     //generate jwt token
-    const token = generateToken({ email: user.email });
+    const token = generateToken({ email: user.email,id:user._id });
     console.log("token generated: ", token);
 
     res.status(200).json({ savedData: savedData, token: token });
@@ -51,7 +51,9 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ error: "invalid  email or password" });
 
     //token generate
-    const token = generateToken({ email: user.email });
+    const token = generateToken({ email: user.email ,id:user._id
+      
+    });
     res.status(200).json({user,token });
   } catch (error) {
     console.log(error.response);
@@ -71,12 +73,14 @@ router.get("/users", async (req, res) => {
 //profile with middleware protectedroute
 router.get("/profile", jwtAuthMiddleware, async (req, res) => {
   try {
+    console.log("the data is ", req.userPayload);
     const { email } = req.userPayload;
+    // const data = req.userPayload;
     //find user
     const user = await User.findOne({ email }).select("-password");
     console.log("From db found", user);
     if (!user) {
-      return res.send(404).json({ message: "User not found" });
+      return res.status(404).json({ message: "User not found" });
     }
     res.status(200).json({ user });
   } catch (error) {

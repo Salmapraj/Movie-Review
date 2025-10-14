@@ -11,7 +11,7 @@ e.preventDefault();
 if(!mov.trim()) return;
 try {
  await SearchMovies(mov)
-
+setMov("")
 } catch (error) {
   console.log('error searching for movies',mov);
 }

@@ -9,7 +9,7 @@ import Movies from './pages/Movies/Movies'
 import { AuthProvider,useAuth } from './context/AuthContext'
 import Dashboard from './components/Dashboard'
 import { MovieProvider } from './context/MovieContext'
-
+import Detail from './pages/Detail/Detail';
 
 function PrivateRoute({children}){
   const {isAuthenticated,loading}= useAuth()
@@ -34,7 +34,9 @@ function App() {
         </PrivateRoute>
           
         }/>
+
       <Route path='/movies' element={<Movies/>}/>
+      <Route path='/movies/:id' element={<Detail/>}/>
         </Route>
 
 

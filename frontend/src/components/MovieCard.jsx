@@ -1,14 +1,21 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
+
 
 function MovieCard({movie}) {
+  const navigate=useNavigate()
     const releaseDate= movie.release_date? new Date(movie.release_date).toLocaleDateString("en-US", {
         month: "short",
         day: "numeric",
         year: "numeric",
       })
     : "TBA";
+
+      
+
   return (
-    <div className="movie-card cursor-pointer bg-gray-600 rounded-2xl shadow-md overflow-hidden hover:scale-105 transition-transform duration-300">
+    <div className="movie-card cursor-pointer bg-gray-600 rounded-2xl shadow-md overflow-hidden hover:scale-105 transition-transform duration-300" 
+    onClick={()=>navigate(`/movies/${movie.id}`)}>
         <div>
 
   <img className="w-full h-full object-cover" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />

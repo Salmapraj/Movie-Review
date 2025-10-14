@@ -25,7 +25,7 @@ const generateToken =(payload)=>{
     try {
     console.log("JWT secret:", process.env.JWT_SECRET_KEY);
 
-        return  jwt.sign(payload,process.env.JWT_SECRET_KEY,{expiresIn:30000})
+        return  jwt.sign(payload,process.env.JWT_SECRET_KEY,{expiresIn:"94h"})
         
     } catch (error) {
         console.error("Error generating token:", error);
