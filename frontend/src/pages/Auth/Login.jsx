@@ -29,6 +29,7 @@ const HandleSubmit = async (e) => {
       alert("login sucessful")
     } catch (error) {
       console.log( error.message|| 'login failed');
+      alert('Invalid email or password')
     }
   };
   return (

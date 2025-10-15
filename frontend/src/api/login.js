@@ -17,6 +17,7 @@ const response =await axios.post(`${API_URL}login`, PostData,
     return data
 // localStorage.setItem("user",JSON.stringify(user))
 } catch (error) {
+    alert('Invalid Email or password')
     console.log('errorlogging in',error.message)
 }
 

@@ -17,7 +17,7 @@ console.log(error.message)
     res.status(401).json({ error: 'Invalid token' });
 }
 }
-
+ 
 
 
 //function to generate token

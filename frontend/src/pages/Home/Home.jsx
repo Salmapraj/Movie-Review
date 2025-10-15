@@ -16,7 +16,7 @@ const {movies,searchResults,loading ,error}=useMovies()
       <SearchBar/>
       </div>
 {/* //Movie section */}
-      <div className='bg-gray-900'>
+      <div className='bg-gray-900 p-7'>
         <h1 className="text-4xl text-white font-bold mb-12">
         {searchResults.length>0 ?"Search Results:": "Popular Movies"}
          </h1>

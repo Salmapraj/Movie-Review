@@ -5,7 +5,11 @@ function Navbar() {
     <nav className="h-15 text-xl ">
       <div className="flex h-full border justify-between items-center p-2">
         <div>
-          <h2 className="font-semibold">MOVECUT</h2>
+          <NavLink to='/'>
+
+          <h2 className="font-semibold">MOVIECUT</h2>
+          </NavLink>
+          
         </div>
 
         <ul className="flex justify-between items-center font-semibold gap-12 ">

@@ -24,10 +24,26 @@ routerReview.get("/movie/:id/reviews", async (req, res) => {
       }),
       Review.find({ movieId }).populate("userId", "email"),
     ]);
-    const combinedReviews = [
-      ...(localReview || []),
-      ...(tmdbResponse.data.results || []),
-    ];
+
+    //normalize localreview to match with tmdb reviews
+    const formattedLocal = (localReview || []).map((rev) => ({
+  author: rev.userId?.email || rev.email || "Anonymous",
+  rating: rev.rating || null,
+  content: rev.review,
+  createdAt: rev.createdAt,
+  source: "Local",
+}));
+
+//normalize tmdbreviews
+const formattedTmdb = (tmdbResponse.data.results || []).map((rev) => ({
+  author: rev.author,
+  rating: rev.author_details?.rating || null,
+  content: rev.content,
+  createdAt: rev.created_at,
+  source: "TMDB",
+}));
+
+    const combinedReviews = [...formattedLocal, ...formattedTmdb ].sort((a,b)=> new Date(b.createdAt)-new Date(a.createdAt));
 
     res.status(200).json(combinedReviews);
   } catch (error) {
