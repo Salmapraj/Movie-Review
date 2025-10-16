@@ -53,7 +53,7 @@ setRating(0)
   }
 
   return (
-    <div>
+    <div className="bg-gray-900 text-white">
       <form onSubmit={HandleSubmit} className="">
        <div className="flex flex-col"> 
         <label htmlFor="" className="ml-5 my-3"> Write a Review</label>
@@ -63,7 +63,7 @@ setRating(0)
           id=""
           value={content} required
           onChange={(e) => setContent(e.target.value)}
-          className="bg-gray-100 p-4 w-1/2 mx-5 rounded-xl shadow-sm border border-gray-200"
+          className="bg-gray-300 p-4 w-1/2 mx-5 rounded-xl shadow-sm border border-gray-200"
         >writea review</textarea></div>
         
         <div>
@@ -81,7 +81,7 @@ setRating(0)
         <button
           type="submit"
           disabled={loading}
-          className="bg-blue-600 mb-10 ml-5 mt-5 text-white px-4 py-2 rounded-md hover:bg-blue-700 disabled:opacity-50"
+          className="bg-gray-600 mb-10 ml-5 mt-5 text-white px-4 py-2 rounded-md hover:bg-gray-500 disabled:opacity-50"
         >
           {loading ? "Posting..." : "Submit Review"}
         </button>

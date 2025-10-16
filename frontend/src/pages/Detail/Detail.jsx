@@ -3,7 +3,6 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import StarRating from '../../components/StarRating';
 import CastSlider from '../../components/CastSlider';
-import { useNavigate } from 'react-router-dom';
 import ReviewList from '../../components/ReviewList';
 import WriteReview from '../../components/WriteReview';
 
@@ -16,7 +15,6 @@ const [reviews, setReviews]=useState([])
 const [movie,setMovie]=useState(null) // only one movie is send from api so put null
 const [loading,setLoading]= useState(true)
 const [error,setError]= useState(null)
-const navigate=useNavigate()
 
 useEffect(()=>{
 //fetch detail, movie reviews and casts
@@ -51,7 +49,7 @@ useEffect(()=>{
       
   return (
     <>
-    <div className="relative w-full h-[70vh] overflow-hidden">
+    <div className="relative w-full h-[70vh] overflow-hidden ">
   <img
     src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
     alt={movie.title}
@@ -73,7 +71,7 @@ useEffect(()=>{
       <h1 className="text-2xl font-bold md:text-3xl lg:text-5xl">{movie.title} <span className='text-3xl'>({releaseDate})</span></h1>
       <p className="text-sm opacity-90 md:text-sm lg:text-lg ">{movie.overview}</p>
       
-      <div className="flex flex-wrap gap-2 text-sm opacity-90 md:text-sm lg:text-lg">
+      <div className="flex flex-wrap gap-2 text-sm opacity-90 md:text-sm lg:text-lg ">
   {movie.genres.map((gen) => (
     <p key={gen.id} className="px-1 py-1 text-sm opacity-90 md:text-sm lg:text-lg ">
       {gen.name} |
@@ -88,7 +86,7 @@ useEffect(()=>{
 
   
 </div>
-<div className='p-4'>
+<div className='p-4 bg-gray-900 text-white'>
  <CastSlider casts={casts}/>
 
  {/* reviews */}

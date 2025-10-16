@@ -29,7 +29,7 @@ setMov("")
         />
         <button
           type="submit"
-          className="bg-teal-500 text-xl text-white px-6 py-3 rounded-r-4xl hover:bg-teal-600"
+          className="bg-gray-500 text-xl text-white px-6 py-3 rounded-r-4xl hover:bg-teal-900"
         >
           Search
         </button>

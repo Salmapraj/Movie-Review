@@ -33,7 +33,7 @@ function CastSlider({ casts }) {
         {casts.map((cast) => (
           <div
             key={cast.id}
-            className="flex-none w-40 bg-white rounded-2xl shadow-md p-2 hover:scale-105 transition-transform duration-200"
+            className="flex-none w-40 bg-gray-300 rounded-2xl shadow-md p-2 hover:scale-105 transition-transform duration-200"
           >
             <img
               src={

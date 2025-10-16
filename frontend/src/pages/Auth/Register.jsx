@@ -30,24 +30,22 @@ const {register} = useAuth();
     }
   };
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen">
+    <div className="flex flex-col justify-center items-center min-h-screen text-white text-xl bg-gray-900">
       <h2 className="font-bold text-3xl  mb-3">Welcome to </h2>
       <h2 className="font-bold text-3xl mb-5">MovieChatter</h2>
 
       <form
         action="/submit"  onSubmit={HandleSubmit}
-        className="flex flex-col gap-6 border border-gray-500 rounded-4xl p-6 w-90 mb-8"
+    className="flex flex-col h-[50vh] w-[450px] gap-5 border border-gray-500 bg-gray-800 rounded-4xl p-6 w-80 mb-8"
       >
-        {/* <label htmlFor=""  className=''>Username</label>
-      <input type="text" placeholder='Email' className='py-2 px-1 border border-gray-500 rounded-lg'/> */}
 
-        <label htmlFor="" className="">
+        <label htmlFor="" className="text-xl">
           Email
         </label>
         <input
           type="text"
           placeholder="Email"
-          className="py-2 px-1 border border-gray-500 rounded-lg"
+          className="py-3 px-2 border border-gray-500 rounded-lg mb-5"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -56,7 +54,7 @@ const {register} = useAuth();
         <input
           type="password"
           placeholder="Password"
-          className="py-2 px-1 border border-gray-500 rounded-lg"
+          className="py-3 px-2 border border-gray-500 rounded-lg mb-7"
           value={password}
           onChange={(e) => {
            const val =e.target.value;
@@ -68,18 +66,17 @@ const {register} = useAuth();
         />
         <button
           type="submit"
-          className="py-2 px-3 text-center border border-gray-500 rounded-lg mb-5"
+      className="py-3 text-xl px-3 text-center border border-gray-500 rounded-lg bg-gray-600 hover:bg-gray-500"
         >
-          Login
-        </button>
+Sign Up        </button>
       </form>
-      <h2 className="font-semibold text-2xl mb-5">OR</h2>
-      <button
+      {/* <h2 className="font-semibold text-2xl mb-5">OR</h2> */}
+      {/* <button
         className="py-2 px-3 w-65 border border-gray-500 rounded-lg"
         disabled={!email || password < 5}
       >
         Sign in with Google
-      </button>
+      </button> */}
     </div>
   );
 }

@@ -70,16 +70,21 @@ const registerUser = async (postData) => {
 
 
   //logout
-//    const logout = () => {
-//     localStorage.removeItem("user");
-//     localStorage.removeItem("token");
-//     setUser(null);
-//     setToken(null);
-//     setIsAuthenticated(false);
-//   };
+   const logout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    setUser(null);
+    setToken(null);
+    setIsAuthenticated(false);
+  };
 
 return (
-    <AuthContext.Provider value={{user,isAuthenticated,token,register:registerUser,login:loginUser, loading}}>
+    <AuthContext.Provider value={{user,
+    isAuthenticated,
+    token,register:registerUser,
+    login:loginUser, 
+    loading,
+    logout}}>
         {children}
     </AuthContext.Provider>
 )

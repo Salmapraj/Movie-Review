@@ -11,6 +11,7 @@ export const MovieProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   useEffect(() => {
+    //popular movies
     const fetchMovies = async () => {
       try {
 const res = await axios.get(`${API_URL}movies?page=${page}`);

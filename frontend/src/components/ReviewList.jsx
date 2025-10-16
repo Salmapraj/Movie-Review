@@ -8,7 +8,7 @@ function ReviewList({reviews=[]}) {
         reviews.map((rev, index) => (
           <div
             key={index}
-            className="bg-gray-100 p-4 rounded-xl shadow-sm border border-gray-200"
+            className="bg-gray-300 p-4 rounded-xl shadow-sm border border-gray-200"
           >
             <div className="flex justify-between">
               <p className="font-semibold text-gray-800">{rev.author}</p>

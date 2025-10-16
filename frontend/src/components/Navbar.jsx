@@ -1,9 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import account from '../assets/account.png'
+import ProfileMenu from "./ProfileMenu";
 function Navbar() {
+  const {isAuthenticated}= useAuth();
   return (
-    <nav className="h-15 text-xl ">
-      <div className="flex h-full border justify-between items-center p-2">
+    <nav className="h-15 text-lg lg:text-xl ">
+      <div className="flex h-full text-gray-200 justify-between text-[24px] items-center p-2 bg-gray-800">
         <div>
           <NavLink to='/'>
 
@@ -19,12 +23,7 @@ function Navbar() {
           >
             <li>Home</li>
           </NavLink>
-          <NavLink
-            to="/dashboard"
-            className="hover:underline hover:underline-offset-6 font-semibold"
-          >
-            <li>Dashboard</li>
-          </NavLink>
+         
 
           <NavLink to="/movies" className="hover:underline underline-offset-6">
             <li>Movies</li>
@@ -35,7 +34,17 @@ function Navbar() {
           </NavLink>
         </ul>
 
-        <ul className="flex justify-between items-center font-semibold gap-6">
+
+{isAuthenticated ? <div>
+  <div className="font-semibold mr-10">
+   <ProfileMenu/>
+    </div>
+
+
+  
+
+
+</div>: <ul className="flex justify-between items-center font-semibold gap-6">
           <NavLink to="/login" className="hover:underline underline-offset-6">
             <li>Login</li>
           </NavLink>
@@ -46,7 +55,8 @@ function Navbar() {
           >
             <li>SignUp </li>
           </NavLink>
-        </ul>
+        </ul>}
+       
       </div>
     </nav>
   );
