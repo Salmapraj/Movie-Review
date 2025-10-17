@@ -5,7 +5,7 @@ import ProfileMenu from "./ProfileMenu";
 function Navbar() {
   const {isAuthenticated}= useAuth();
   return (
-    <nav className="h-15 text-lg lg:text-xl ">
+    <nav className="h-15 text-lg lg:text-xl sticky top-0 z-10">
       <div className="flex h-full text-gray-200 justify-between text-[24px] items-center p-2 bg-gray-800">
         <div>
           <NavLink to='/'>

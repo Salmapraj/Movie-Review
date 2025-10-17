@@ -4,13 +4,14 @@ import account from "../../assets/account.png";
 import MyReview from "../../components/MyReview";
 import SideMenuBar from "../../components/SideMenuBar";
 import { useNavigate } from "react-router-dom";
+import Favourite from "../../components/MyFavourite";
 
 
 function Profile() {
-  const { user } = useAuth();
-  const navigate= useNavigate()
+  const { user,logout } = useAuth();
+  const navigate = useNavigate();
   const username = user?.email ? user.email.split("@")[0] : "User";
-  const [selectedSection, setSelectedSection] = useState("review"); 
+  const [selectedSection, setSelectedSection] = useState("review");
 
   return (
     <div className="flex">
@@ -30,13 +31,9 @@ function Profile() {
 
         <div className="p-5">
           {selectedSection === "review" && <MyReview />}
-          {selectedSection === "favourite" && (
-            <div className="text-xl text-gray-400">Favourite movies go here...</div>
-          )}
-          {selectedSection === "home" && (
-            navigate('/')
-            
-          )}
+          {selectedSection === "favourite" && <Favourite />}{" "}
+          {selectedSection === "home" && navigate("/")}
+          {selectedSection==='logout' && logout() }
         </div>
       </div>
     </div>

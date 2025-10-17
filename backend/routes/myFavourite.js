@@ -12,7 +12,7 @@ favRouter.get("/get-favourite", jwtAuthMiddleware, async (req, res) => {
     if (!id) return res.status(400).json({ error: "Invalid user Id." });
 
     const movies = await Favourite.find({ userId: id });
-    res.status(200).json({movies});
+    res.status(200).json(movies);
     console.log("favourite  movie saved", movies);
 
   } catch (error) {
