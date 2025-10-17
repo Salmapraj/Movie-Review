@@ -39,7 +39,7 @@ function Favourite() {
 
   return (
     <div className="p-6">
-      <h2 className="text-3xl font-bold mb-6 text-white">Favourties</h2>
+      <h2 className="text-3xl font-bold mb-6 text-white">Favourites</h2>
 
       {favourites.length === 0 ? (
         <p className="text-gray-400">No favourite movies yet.</p>
@@ -48,7 +48,7 @@ function Favourite() {
           {favourites.map((fav) => (
             <div
               key={fav._id}
-              className="bg-[#1f2937] border border-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg transition-shadow duration-200"
+              className="bg-[#1f2937] border cursor-pointer border-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg transition-shadow duration-200"
             >
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
                 <div

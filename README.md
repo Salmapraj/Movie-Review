@@ -37,8 +37,8 @@ Movie-Review/
 ├── backend/
 │ ├── models/
 │ ├── routes/
-│ ├── db.js/
-│ ├── index.js/
+│ ├── db.js
+│ ├── index.js
 │ └── jwt.js
 ├── frontend/
 │ ├── src/
@@ -98,9 +98,29 @@ Click on a movie to view details and cast
 Add your review and rating
 See other users’ review
 
-Screenshots
+
 
 Author
 Salma - Salmapraj
+##  Screenshots
 
+###  Home Page
+![Home Page](./screenshots/home.png)
+
+###  Login Page
+![Login Page](./screenshots/login.png)
+
+###  Movie Page
+![Movie Page](./screenshots/movies.png)
+
+###  Movie Details Page
+![Movie Details Page](./screenshots/MovieDetails.png)
+
+###  Profile Page
+
+![profile Page](./screenshots/profile.png)
+
+###  Reviews Section
+
+![reviews](./screenshots/castAndReviews.png)
 ```
