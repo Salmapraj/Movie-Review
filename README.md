@@ -32,27 +32,7 @@ It integrates data from TMDB (The Movie Database) API and includes authenticatio
 - JWT Authentication
 - dotenv, bcrypt, cors,nodemon
 
-##Project Structure
-Movie-Review/
-├── backend/
-│ ├── models/
-│ ├── routes/
-│ ├── db.js
-│ ├── index.js
-│ └── jwt.js
-├── frontend/
-│ ├── src/
-│ │ ├── components/
-│ │ ├── pages/
-│ │ ├── api/
-│ │ ├── assets/
-│ │ ├── context/
-│ │ ├── App.jsx
-│ │ ├── Layout.jsx
-│ │ └── main.jsx
-│ └── package.json
-├── .gitignore
-└── README.md
+
 
 ## Getting Started
 
@@ -102,25 +82,4 @@ See other users’ review
 
 Author
 Salma - Salmapraj
-##  Screenshots
 
-###  Home Page
-![Home Page](./screenshots/home.png)
-
-###  Login Page
-![Login Page](./screenshots/login.png)
-
-###  Movie Page
-![Movie Page](./screenshots/movies.png)
-
-###  Movie Details Page
-![Movie Details Page](./screenshots/MovieDetails.png)
-
-###  Profile Page
-
-![profile Page](./screenshots/profile.png)
-
-###  Reviews Section
-
-![reviews](./screenshots/castAndReviews.png)
-```
