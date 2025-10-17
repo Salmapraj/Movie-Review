@@ -82,25 +82,26 @@ Author
 Salma - Salmapraj
 
 ## Screenshots
-###H## Screenshots
-
-### Homepage
+###Homepage
 ![Home page](https://raw.githubusercontent.com/Salmapraj/Movie-Review/main/screenshots/home.png)
 
 ### Login page
-![Login page](https://raw.githubusercontent.com/Salmapraj/Movie-Review/main/screenshots/login.png)
+![Login page](./screenshots/login.png)
 
 ### Movie page
-![Movie page](https://raw.githubusercontent.com/Salmapraj/Movie-Review/main/screenshots/movies.png)
+![Movie page](screenshots/movies.png)
 
-### Movie Details page
-![Movie Detail page](https://raw.githubusercontent.com/Salmapraj/Movie-Review/main/screenshots/MovieDetails.png)
+### MOvie Details page
+![Movie Detail page](screenshots/MovieDetails.png)
+
 
 ### Profile page
-![Profile page](https://raw.githubusercontent.com/Salmapraj/Movie-Review/main/screenshots/profile.png)
+![profile page](screenshots/profile.png)
 
 ### Reviews page
-![Review page](https://raw.githubusercontent.com/Salmapraj/Movie-Review/main/screenshots/castAndReviews.png)
+![Review page](screenshots/castAndReview.png)
 
+ ### MyReviews
+![MyReview page](screenshots/myreviews.png)
 
 ```
