@@ -83,25 +83,25 @@ Salma - Salmapraj
 
 ## Screenshots
 ###Homepage
-![Home page](https://raw.githubusercontent.com/Salmapraj/Movie-Review/main/screenshots/home.png)
+![Home page](./screenshots/home.png)
 
 ### Login page
 ![Login page](./screenshots/login.png)
 
 ### Movie page
-![Movie page](screenshots/movies.png)
+![Movie page](./screenshots/movies.png)
 
 ### MOvie Details page
-![Movie Detail page](screenshots/MovieDetails.png)
+![Movie Detail page](./screenshots/MovieDetails.png)
 
 
 ### Profile page
-![profile page](screenshots/profile.png)
+![profile page](./screenshots/profile.png)
 
 ### Reviews page
-![Review page](screenshots/castAndReview.png)
+![Review page](./screenshots/castAndReview.png)
 
  ### MyReviews
-![MyReview page](screenshots/myreviews.png)
+![MyReview page](./screenshots/myreviews.png)
 
 ```
