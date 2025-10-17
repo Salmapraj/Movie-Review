@@ -32,8 +32,6 @@ It integrates data from TMDB (The Movie Database) API and includes authenticatio
 - JWT Authentication
 - dotenv, bcrypt, cors,nodemon
 
-
-
 ## Getting Started
 
 ### Prerequisites
@@ -82,5 +80,26 @@ See other users’ review
 
 Author
 Salma - Salmapraj
+
+## Screenshots
+###Homepage
+![Home page](./screenshots/home.png)
+
+### Login page
+![Login page](./screenshots/login.png)
+
+### Movie page
+![Movie page](./screenshots/movies.png)
+
+### MOvie Details page
+![Movie Detail page](./screenshots/MovieDetails.png)
+
+
+### Profile page
+![profile page](./screenshots/profile.png)
+
+### Reviews page
+![Review page](./screenshots/castAndReviews.png)
+
 
 ```
