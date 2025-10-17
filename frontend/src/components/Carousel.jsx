@@ -43,7 +43,6 @@ function PrevArrow({onClick}){
     >
         <Slider {...settings}>
         {movies.slice(0,8).map((mov)=>( 
-            //  <div className="absolute inset-0 bg-black/70"></div>
 
             <div key={mov.id} className='relative'>
                     <img src={`${baseImgUrl}${mov.backdrop_path}`} alt={mov.title}  
@@ -66,25 +65,4 @@ function PrevArrow({onClick}){
 export default Carousel
 
 
-//   return (
-//     <div className="mb-10">
-//       <Slider {...settings}>
-//         {movies.slice(0, 8).map((movie) => (
-//           <div key={movie.id} className="relative">
-//             <img
-//               src={`${baseImgUrl}${movie.backdrop_path}`}
-//               alt={movie.title}
-//               className="w-full h-[500px] object-cover rounded-2xl shadow-lg"
-//             />
-//             <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-10 rounded-2xl">
-//               <h2 className="text-4xl font-bold text-white mb-2">{movie.title}</h2>
-//               <p className="text-gray-200 text-sm max-w-2xl">{movie.overview.slice(0, 120)}...</p>
-//             </div>
-//           </div>
-//         ))}
-//       </Slider>
-//     </div>
-//   );
-// }
 
-// export default MovieCarousel;

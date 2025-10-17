@@ -21,6 +21,7 @@ return (
            } className="text-xl font-bold mb-12 cursor-pointer">
         {searchResults.length>0 && "Back"}
          </h1>
+         
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 space-y-5">
 {error &&<p>{error}</p>}

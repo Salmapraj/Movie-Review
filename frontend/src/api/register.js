@@ -4,22 +4,18 @@ const API_URL = "http://localhost:3000/api"; // full backend URL
 
 //register api call
 
-export const register =async(postData)=>{
-try {
-   const res= await axios.post(`${API_URL}/register`,postData,
-{
-    headers:{
-        'Content-Type': 'application/json'
-    }
-}
-)
-const userInfo = res.data
-console.log(res.data)
-// return res.data;
-localStorage.setItem("user", JSON.stringify(userInfo.savedData))
+export const register = async (postData) => {
+  try {
+    const res = await axios.post(`${API_URL}/register`, postData, {
+      headers: { 'Content-Type': 'application/json' }
+    });
+    console.log('Backend response:', res.data); // Log the entire response
+    return res.data;
+  } catch (error) {
+    console.log('Error registering user:', error.response?.data, error.message);
+    throw error;
+  }
+};
 
-} catch (error) {
-    console.log('error registering user',error.message)
-    throw error
-}
-}
+
+

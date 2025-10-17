@@ -10,7 +10,9 @@ export const MovieProvider = ({ children }) => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  
   useEffect(() => {
+
     //popular movies
     const fetchMovies = async () => {
       try {

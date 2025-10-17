@@ -20,14 +20,14 @@ const {register} = useAuth();
       password,
     };
     try {
-      const data = await register(PostData);
-      console.log("user registerd", data);
-      setEmail("");
-      setPassword("");
-      navigate('/login')
-    } catch (error) {
-      console.log("registration fialed", error.message);
-    }
+  const data = await register(PostData);
+  console.log("User registered:", data);
+  navigate('/');
+} catch (error) {
+  console.log("Registration failed:", error.message);
+  setError(error.message); // ✅ show message like "user already exists Login"
+}
+
   };
   return (
     <div className="flex flex-col justify-center items-center min-h-screen text-white text-xl bg-gray-900">

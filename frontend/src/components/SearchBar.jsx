@@ -20,7 +20,7 @@ setMov("")
 
   return (
     <div className='flex items-center justify-center p-4' >
-<form action="/submit"          onSubmit={HandleSubmit}
+<form action="/submit"     onSubmit={HandleSubmit}
  className="flex items-center w-full lg:w-1/2">
         <input
           type="text" value={mov} onChange={(e)=>setMov(e.target.value)}

@@ -13,26 +13,17 @@ const [token,setToken]= useState(null)
 const [loading, setLoading] =  useState(true)
 
 //on reload check saved daata from localstorage 
-useEffect(()=>{
-const storedUser= localStorage.getItem('user');
-const storedToken = localStorage.getItem('token')
+useEffect(() => {
+  const storedUser = localStorage.getItem("user");
+  const storedToken = localStorage.getItem("token");
 
-if(storedUser && storedToken){
-    axios.get('http://localhost:3000/api/profile',{
-        headers:{
-            authorization : `Bearer ${storedToken}`
-        }
-    }).then((res)=>{
-        setUser(res.data.user)
-        setToken(storedToken)
-        setIsAuthenticated(true)
-    }).catch(()=>{
-        localStorage.removeItem('user')
-        localStorage.removeItem('token')
-    })
-    .finally(()=> setLoading(false))
-}else setLoading(false)
-},[])
+  if (storedUser && storedToken) {
+    setUser(JSON.parse(storedUser));
+    setToken(storedToken);
+    setIsAuthenticated(true);
+  }
+  setLoading(false);
+}, []);
 
 
 //login function
@@ -54,19 +45,26 @@ const loginUser  = async(PostData)=>{
 
 //register
 const registerUser = async (postData) => {
-    try {
-        
-        const res = await register(postData);
-        const { user, token } = res.data;
-        setUser(user);
-        setToken(token);
-        setIsAuthenticated(true);
-        localStorage.setItem("user", JSON.stringify(user));
-        localStorage.setItem("token", token);
-    } catch (error) {
-        throw error
+  try {
+    const res = await register(postData);
+    const { savedData, token } = res;
+
+    setUser(savedData);
+    setToken(token);
+    setIsAuthenticated(true);
+    localStorage.setItem("user", JSON.stringify(savedData));
+    localStorage.setItem("token", token);
+
+    return res.data;
+  } catch (error) {
+    if (error.response && error.response.data && error.response.data.error) {
+      throw new Error(error.response.data.error);
+    } else {
+      throw new Error("Registration failed");
     }
-  };
+  }
+};
+
 
 
   //logout

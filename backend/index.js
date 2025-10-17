@@ -17,12 +17,6 @@ const PORT = process.env.PORT || 3000; // fallback if not set
 
 dotenv.config()
 
-app.get("/",(req,res)=>{
-    res.send("helllo world")
-})
-app.get("/getData",(req,res)=>{
-    res.send("helllo world")
-})
 
 //movies api call 
 import tmdbRouter from './routes/apiCall.js';

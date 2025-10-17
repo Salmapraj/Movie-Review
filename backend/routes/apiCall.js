@@ -1,6 +1,5 @@
 import express from "express";
 import axios from "axios";
-import {jwtAuthMiddleware} from "../jwt.js";
 import dotenv from "dotenv"
 
 const tmdbRouter = express.Router();
