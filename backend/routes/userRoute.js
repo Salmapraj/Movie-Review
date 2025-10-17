@@ -61,21 +61,12 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.get("/users", async (req, res) => {
-  try {
-    const data = await User.find();
-    res.status(200).json(data);
-  } catch (error) {
-    res.status(500).json({ error: "Error fetching data" });
-  }
-});
 
 //profile with middleware protectedroute
 router.get("/profile", jwtAuthMiddleware, async (req, res) => {
   try {
     console.log("the data is ", req.userPayload);
     const { email } = req.userPayload;
-    // const data = req.userPayload;
     //find user
     const user = await User.findOne({ email }).select("-password");
     console.log("From db found", user);
@@ -88,28 +79,5 @@ router.get("/profile", jwtAuthMiddleware, async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-
-
-
-//logout route
-
-
-
-
-// router.get("/users/:id", async (req, res) => {
-//   try {
-//     const idData = req.params.id;
-//     const dat = await User.find({ id: idData });
-//     res.status(200).json(dat);
-//   } catch (error) {
-//     res.status(500).json({ error: "Error fetching data" });
-//   }
-// });
-
-// router.put("/users/:id", async (req, res) => {
-//   try {
-//     await User.find({});
-//   } catch (error) {}
-// });
 
 export default router;

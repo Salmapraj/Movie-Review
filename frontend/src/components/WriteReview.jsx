@@ -53,10 +53,10 @@ setRating(0)
   }
 
   return (
-    <div className="bg-gray-900 text-white">
+    <div className="bg-gray-900">
       <form onSubmit={HandleSubmit} className="">
        <div className="flex flex-col"> 
-        <label htmlFor="" className="ml-5 my-3"> Write a Review</label>
+        <label htmlFor="" className="ml-5 my-3 text-white"> Write a Review</label>
 
         <textarea
           name="review"
@@ -64,17 +64,17 @@ setRating(0)
           value={content} required
           onChange={(e) => setContent(e.target.value)}
           className="bg-gray-300 p-4 w-1/2 mx-5 rounded-xl shadow-sm border border-gray-200"
-        >writea review</textarea></div>
+        >write a review</textarea></div>
         
         <div>
-          <label htmlFor=""className="ml-5">Rating: </label>
+          <label htmlFor=""className="ml-5 text-white">Rating: </label>
         <input
           type="number"
           value={rating}
           min="0"
           max="10" required
           onChange={(e) => setRating(Number(e.target.value))}
-          className="border p-2 rounded-md w-24 ml-3 mt-3"
+          className="border text-gray-200 p-2 rounded-md w-24 ml-3 mt-3"
         />
         </div>
         {error && <p className="text-red-500 text-sm">{error}</p>}

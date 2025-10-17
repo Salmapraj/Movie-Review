@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import account from '../assets/account.png'
 import ProfileMenu from "./ProfileMenu";
 function Navbar() {
   const {isAuthenticated}= useAuth();

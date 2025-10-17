@@ -1,24 +1,46 @@
-import React from 'react'
-import MyReview from '../../components/MyReview';
-import { useAuth } from '../../context/AuthContext';
-import account from "../../assets/account.png"
+import React, { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
+import account from "../../assets/account.png";
+import MyReview from "../../components/MyReview";
+import SideMenuBar from "../../components/SideMenuBar";
+import { useNavigate } from "react-router-dom";
+
 
 function Profile() {
-  const {user}= useAuth()
+  const { user } = useAuth();
+  const navigate= useNavigate()
   const username = user?.email ? user.email.split("@")[0] : "User";
+  const [selectedSection, setSelectedSection] = useState("review"); 
+
   return (
-    <div className='min-h-screen'>
-        <div className=' realative w-full h-[50vh] bg-[#142d3e] p-5'>
-         <MyReview/>
-         <div className='flex  items-center gap-4'>
-          <img src={account} alt="pp" className='w-50' />
-          {/* <span className='text-xl text-white'>{user.email}</span> */}
-         </div>
+    <div className="flex">
+      <SideMenuBar onMenuSelect={setSelectedSection} />
+      <div className="ml-60 w-full min-h-screen bg-gray-900 text-white">
+        <div className="relative w-full h-[30vh] bg-[#142d3e] p-5 flex items-center gap-5">
+          <img
+            src={account}
+            alt="profile"
+            className="w-24 h-24 rounded-full border-4 border-white"
+          />
+          <div>
+            <h1 className="text-2xl font-semibold">{username}</h1>
+            <p className="opacity-70">{user?.email}</p>
+          </div>
         </div>
 
-
+        <div className="p-5">
+          {selectedSection === "review" && <MyReview />}
+          {selectedSection === "favourite" && (
+            <div className="text-xl text-gray-400">Favourite movies go here...</div>
+          )}
+          {selectedSection === "home" && (
+            navigate('/')
+            
+          )}
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
 export default Profile;

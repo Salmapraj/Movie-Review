@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+import {useNavigate} from 'react-router-dom'
 
 const API_URL = "http://localhost:3000/api/";
 
@@ -8,7 +9,7 @@ function MyReview() {
   const { token } = useAuth();
   const [myReviews, setMyreviews] = useState([]);
   const [error, setError] = useState(null);
-
+const navigate = useNavigate()
   const myReview = async () => {
     try {
       const res = await axios.get(`${API_URL}my-reviews`, {
@@ -43,14 +44,18 @@ function MyReview() {
       <h2 className="text-2xl font-semibold mb-4">My Reviews</h2>
       {error && <p className="text-red-500">{error}</p>}
       {myReviews.length > 0 ? (
-        <div className="space-y-4">
+        <div className="space-y-4 ">
           {myReviews.map((rev) => (
             <div
               key={rev._id}
-              className="bg-gray-100 p-4 rounded-lg border border-gray-200 shadow-sm"
+              className="bg-gray-100 p-4 rounded-lg border border-gray-200 shadow-sm hover:scale-101 transition-transform duration-300"
+
+            onClick={()=>{
+              navigate(`/movies/${rev.movieId}`)
+            }}
             >
               <p className="font-semibold text-gray-800">{rev.review}</p>
-              <p className="font-semibold text-gray-800">{rev.email}</p>
+              <p className="font-semibold text-gray-800">{rev.userId?.email}</p>
               <p className="text-yellow-600 text-sm">Rating: {rev.rating}/10</p>
               <p className="text-xs text-gray-500">
                 {new Date(rev.createdAt).toLocaleDateString()}

@@ -30,13 +30,15 @@ import userRouter from './routes/userRoute.js'; //import router frim useRouter
 import movieRouter from './routes/movieApi.js';
 import routerReview from './routes/review.js';
 import myReview from './routes/myreview.js';
+import favRouter from './routes/myFavourite.js';
+
 
 app.use('/api',tmdbRouter)
 app.use('/api',userRouter) //use router
 app.use('/api',movieRouter)
 app.use('/api',routerReview)
 app.use('/api',myReview)
-
+app.use('/api',favRouter)
 
 
 

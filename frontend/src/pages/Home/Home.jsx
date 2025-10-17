@@ -1,5 +1,4 @@
 import React from 'react'
-import Login from '../Auth/Login'
 import SearchBar from '../../components/SearchBar'
 import MovieCard from "../../components/MovieCard"
 import { useMovies } from '../../context/MovieContext'

@@ -11,15 +11,15 @@ function ProfileMenu() {
     const menuRef= useRef() // {curent: undefined}
       const username = user?.email ? user.email.split("@")[0] : "User";
 
-    useEffect(()=>{
-      const handleClickOutside =(e)=>{
-        if(menuRef.current && !menuRef.current.contains(e.target)){
-          setOpen(false)
-        }
-      }
-      document.addEventListener('mousedown',handleClickOutside);
-      return ()=> document.removeEventListener('mousedown',handleClickOutside)
-    },[])
+    // useEffect(()=>{
+    //   const handleClickOutside =(e)=>{
+    //     if(menuRef.current && !menuRef.current.contains(e.target)){
+    //       setOpen(false)
+    //     }
+    //   }
+    //   document.addEventListener('mousedown',handleClickOutside);
+    //   return ()=> document.removeEventListener('mousedown',handleClickOutside)
+    // },[])
 
 
   return (
@@ -43,7 +43,7 @@ function ProfileMenu() {
          
           <div className="absolute -top-2 right-5 w-4 h-4 bg-white border-t border-l border-gray-200 rotate-45"></div>
 
-          <div className="px-4 py-3 border-b border-gray-100">
+          <div className="px-4 py-3 border-b border-gray-100 bg-gray-200">
             <p className="font-semibold text-gray-800">{username}</p>
             <button
               onClick={() => {
@@ -57,17 +57,17 @@ function ProfileMenu() {
           </div>
 
           {/* Menu Item */}
-          <div className="py-3">
+          <div className="py-3 bg-gray-200">
               <hr  className='text-gray-300'/>
-            <MenuItem label="Ratings"  onClick={() => navigate("/my-reviews")} />
+            <MenuItem label="My Reviews"  onClick={() => navigate(`/profile/${user._id}`)} />
             <hr  className='text-gray-300'/>
-            <MenuItem label="Favourites" onClick={() => navigate("/my-favourite")} />
+            <MenuItem label="Favourites" onClick={() => navigate(`/profile/${user._id}`)} />
   <hr  className='text-gray-300'/>
 
             <div className="border-t border-gray-100 mt-2">
               <MenuItem
                 label="Logout"
-                textColor="text-red-600 text-lg"
+                textColor="text-gray-800 text-lg"
                 onClick={() => {
                   logout()
                   navigate("/");

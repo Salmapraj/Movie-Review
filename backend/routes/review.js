@@ -4,6 +4,7 @@ import { jwtAuthMiddleware } from "../jwt.js";
 import Review from "../models/reviewsModel.js";
 import dotenv from "dotenv";
 
+
 const bearerToken = process.env.TMDB_BEARER_TOKEN;
 const baseUrl = "https://api.themoviedb.org/3/";
 dotenv.config();
@@ -55,6 +56,7 @@ const formattedTmdb = (tmdbResponse.data.results || []).map((rev) => ({
 routerReview.post("/movie/reviews", jwtAuthMiddleware, async (req, res) => {
   try {
     const { id } = req.userPayload;
+    console.log(req.userPayload)
     const { review, movieId, rating } = req.body;
     if (!movieId || !review || !rating) {
       return res.status(400).json({ error: "All fields are required" });
@@ -64,7 +66,7 @@ routerReview.post("/movie/reviews", jwtAuthMiddleware, async (req, res) => {
       movieId,
       review,
       rating,
-      userId: id,
+      userId:id,
     });
 
     const savedData = await reviewData.save();

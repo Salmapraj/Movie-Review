@@ -2,6 +2,7 @@ import express from 'express'
 import Review from "../models/reviewsModel.js";
 import { jwtAuthMiddleware } from '../jwt.js';
 
+
 const myReview = express.Router()
 myReview.get('/my-reviews',jwtAuthMiddleware, async(req,res)=>{
     try {
@@ -10,7 +11,9 @@ myReview.get('/my-reviews',jwtAuthMiddleware, async(req,res)=>{
     if(!id) return res.status(400).json({error :'Invalid user Id.'})
        
        
-        const userReview = await Review.find({userId: id});   
+        const userReview = await Review.find({userId: id})
+        .populate('userId','email')
+        .sort({createdAt:-1})   
     if (userReview.length === 0) {
       return res.status(200).json({ message: "No reviews found." });
     }
