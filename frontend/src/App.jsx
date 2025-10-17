@@ -13,13 +13,12 @@ import { AuthProvider, useAuth } from "./context/AuthContext";
 import { MovieProvider } from "./context/MovieContext";
 import Detail from "./pages/Detail/Detail";
 import Profile from "./pages/Profile/profile";
-// import Favourite from "./pages/Favourite/Favourite"
 
-function PrivateRoute({ children }) {
-  const { isAuthenticated, loading } = useAuth();
-  if (loading) return <div>Loading...</div>;
-  return isAuthenticated ? children : <Navigate to="/login" replace />;
-}
+// function PrivateRoute({ children }) {
+//   const { isAuthenticated, loading } = useAuth();
+//   if (loading) return <div>Loading...</div>;
+//   return isAuthenticated ? children : <Navigate to="/login" replace />;
+// }
 
 function App() {
   return (
@@ -38,7 +37,6 @@ function App() {
             <Route path="/profile/:_id" element={<Profile />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            {/* <Route path="/favourite" element={<Favourite />} /> */}
           </Routes>
         </Router>
       </MovieProvider>

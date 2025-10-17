@@ -11,16 +11,6 @@ function ProfileMenu() {
     const menuRef= useRef() // {curent: undefined}
       const username = user?.email ? user.email.split("@")[0] : "User";
 
-    // useEffect(()=>{
-    //   const handleClickOutside =(e)=>{
-    //     if(menuRef.current && !menuRef.current.contains(e.target)){
-    //       setOpen(false)
-    //     }
-    //   }
-    //   document.addEventListener('mousedown',handleClickOutside);
-    //   return ()=> document.removeEventListener('mousedown',handleClickOutside)
-    // },[])
-
 
   return (
 

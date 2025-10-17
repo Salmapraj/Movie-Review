@@ -2,7 +2,6 @@ import React from 'react'
 import { useMovies } from '../../context/MovieContext'
 import MovieCard from '../../components/MovieCard';
 import SearchBar from '../../components/SearchBar';
-// import {left} from "../../assets/left.png;
 
 function Movies() {
 const {movies,loading,error,searchResults,setSearchResults, page,setPage}= useMovies();

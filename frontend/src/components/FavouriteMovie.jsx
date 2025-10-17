@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Heart } from "lucide-react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
@@ -11,8 +11,7 @@ function FavouriteMovie({ title, movieId }) {
   const { isAuthenticated, token } = useAuth();
   const navigate = useNavigate();
 
-
-// Check if movie is already in favorites when component loads
+  // Check if movie is already in favorites when component loads
   useEffect(() => {
     const checkIfFavourite = async () => {
       if (!isAuthenticated) return; // skip if user not logged in
@@ -32,7 +31,7 @@ function FavouriteMovie({ title, movieId }) {
     checkIfFavourite();
   }, [movieId]);
 
-//post fav
+  //post fav
   const postFav = async () => {
     if (!isAuthenticated) {
       alert("You must be logged in to add favourites");
@@ -51,17 +50,15 @@ function FavouriteMovie({ title, movieId }) {
     }
   };
 
- 
-
-//delete fav
- const delFav = async () => {
+  //delete fav
+  const delFav = async () => {
     if (!isAuthenticated) {
       alert("You must be logged in to add favourites");
       navigate("/login");
       return;
     }
     try {
-       await axios.delete(`${API_URL}favourite/${movieId}`, {
+      await axios.delete(`${API_URL}favourite/${movieId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log("Favourite deleted");
@@ -71,10 +68,10 @@ function FavouriteMovie({ title, movieId }) {
     }
   };
 
-const toggleClick=(e)=>{
-e.stopPropagation();
-fav ? delFav() :postFav()
-}
+  const toggleClick = (e) => {
+    e.stopPropagation();
+    fav ? delFav() : postFav();
+  };
 
   return (
     <button

@@ -1,6 +1,6 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import FavouriteMovie from './FavouriteMovie';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import FavouriteMovie from "./FavouriteMovie";
 
 function MovieCard({ movie }) {
   const navigate = useNavigate();
