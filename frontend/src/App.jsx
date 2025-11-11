@@ -12,7 +12,7 @@ import Movies from "./pages/Movies/Movies";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { MovieProvider } from "./context/MovieContext";
 import Detail from "./pages/Detail/Detail";
-import Profile from "./pages/Profile/profile";
+import Profile from "./pages/Profile/Profile";
 
 function App() {
   return (
