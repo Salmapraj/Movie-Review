@@ -1,9 +1,10 @@
 
 import mongoose from "mongoose";
-
+import dotenv from "dotenv"
 //connection establish
-const mongoURL = "mongodb://localhost:27017/users";
+dotenv.config()
 
+const mongoURL = process.env.MONGO_URL;
 mongoose.connect(mongoURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -13,7 +14,7 @@ mongoose.connect(mongoURL, {
 const db = mongoose.connection;
 
 //listeners
-db.on("connected", () => console.log("connected to the db"));
+db.on("connected", () => console.log("connected to the db",mongoose.connection.name));
 db.on("disconnected", () => console.log("Not connected to the db"));
 db.on("error", () => console.log("Error connecting to the db"));
 
